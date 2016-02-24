@@ -9,10 +9,13 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.png">
 
-    <title>My dictionary :)</title>
+    <title>Словарь</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	
+	<!-- My CSS -->
+    <link href="bootstrap/css/mystyle.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -38,14 +41,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="?act=main">Словарь</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+			<li <?php if ($act == 'main') {echo "class = 'active'";} ?>><a href="?act=main">Главная</a></li>
+            <li <?php if ($act == 'statistics') {echo "class = 'active'";} ?>><a href="?act=statistics">Статистика</a></li>
+            <li <?php if ($act == 'about') {echo "class = 'active'";} ?>><a href="?act=about">О проекте</a></li>
+          </ul>			
         </div><!--/.nav-collapse -->
       </div>
     </nav>
