@@ -1,5 +1,5 @@
 <?php
-header("Content-Type: text/html; charset=utf-8");
+header("Content-Type: text/html; charset=UTF-8");
 
 mysql_connect('localhost', 'salomuG', 'salomuG') or die("Can not connect to DB");
 mysql_select_db('dictionary') or die("Cannot select db");
@@ -9,19 +9,20 @@ $act = isset($_GET['act']) ? $_GET['act'] : 'main';
 switch($act) {
 	
 	case 'main':
-		if (!($_POST['english_word']) && isset($_POST['save'])){
-			$info = "Wrong!!!!";
+	
+		$english_word = htmlspecialchars(trim($_POST['english_word']));
+		$translating = htmlspecialchars(trim($_POST['translating']));
+	
+		if (isset($_POST['save']) && (!($english_word) || !($translating))){
+			$info = "Error";
 		}
 		else {
-			$english_word = $_POST['english_word'];
-			$translating = $_POST['translating'];
-			
 			$sql = "INSERT INTO `dictionary` (`eng_word`, `ru_word`)
 					VALUES ('$english_word', '$translating')";
 			$res = mysql_query($sql);
-			
+			/*header('Location: ?act=main');*/
 		}
-
+		
 		require_once 'views/main.php';
 		break;
 	

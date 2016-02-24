@@ -1,5 +1,5 @@
 <?php require_once 'header.php';?>
 
-Statistica
+Страница статистики
 
 <?php require_once 'footer.php'; ?>
