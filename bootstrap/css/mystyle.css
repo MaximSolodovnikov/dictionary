@@ -16,3 +16,7 @@
 	font-weight: bold;
 	color: red;
 }
+
+.visibility_info {
+	display: none;
+}

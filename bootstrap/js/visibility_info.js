@@ -1,6 +1,11 @@
-$(function(){
+/*$(document).ready(function(){
 	$('#save_word').click(function(){
-		$('h3').removeClass('visibility_info');
-		$('h3').addClass('visibility_info_op');
+		$('.visibility_info').show();
 	});
-});
+});*/
+
+/*$(document).ready(function(){
+	$('form').on('submit', function(){
+		$('.visibility_info').show();
+	});	
+});*/

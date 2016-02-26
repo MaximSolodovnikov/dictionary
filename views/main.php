@@ -10,15 +10,17 @@
 	<?php endforeach; ?>
 	</div>
 	
-	<form method="POST" action="">
+	<form id="dictionaryform" method="POST" action="">
 		<div class="form-group">
-		<label>
-			<input type="text" name="english_word" placeholder="Английское слово:" class="form-control" value="<?= $english_word; ?>">
-		</label>
-		<label>
-			<input type="text" name="translating" placeholder="Перевод:" class="form-control" value="<?= $translating; ?>">
-		</label><br /><br />
-		<input type="submit" name="save_word" id="save_word" class="btn btn-lg" value="Сохранить">
+			<label>
+				<input type="text" name="english_word" placeholder="Английское слово:" class="form-control" value="<?= $english_word; ?>">
+			</label>
+
+			<label>
+				<input type="text" name="translating" placeholder="Перевод:" class="form-control" value="<?= $translating; ?>">
+			</label>	
+			<br /><br />
+			<input type="submit" name="save_word" id="save_word" class="btn btn-lg" value="Сохранить">
 		</div>
 	</form>
 

@@ -9,6 +9,7 @@ $act = isset($_GET['act']) ? $_GET['act'] : 'main';
 switch($act) {
 	
 	case 'main':
+	
 		$english_word = htmlspecialchars(trim($_POST['english_word']));
 		$translating = htmlspecialchars(trim($_POST['translating']));	
 			
@@ -23,7 +24,7 @@ switch($act) {
 			}
 			$info = "Cool";
 		}
-		else {
+		if (!isset($_POST['save_word'])) {
 			$info = "Error";
 		}
 		$last_word = array();
@@ -33,7 +34,7 @@ switch($act) {
 		while ($row = mysql_fetch_row($res)) {
 			$last_word[] = $row;
 		}
-			require_once 'views/main.php';
+		require_once 'views/main.php';	
 		break;
 
 	
