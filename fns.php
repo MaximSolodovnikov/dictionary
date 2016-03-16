@@ -16,9 +16,15 @@ function db_connect()
 
 function input_user($data)
 {
-    $data = trim($data);
+    /*$data = trim($data);
+    $data = strip_tags($data);
+    $data = stripslashes($data);*/
     $data = htmlspecialchars($data);
-    $data = stripslashes($data);
-    
+
     return $data;
+}
+
+function add_word()
+{
+    
 }

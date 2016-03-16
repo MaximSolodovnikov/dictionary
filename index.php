@@ -22,8 +22,8 @@ switch ($act) {
             } else {
                 $translate = input_user($_POST['translate']);
             }
-            
-            add_word($eng_word, $translate);
+            echo $eng_word . ' ' . $translate;
+            /*add_word($eng_word, $translate);*/
         }
         
         require_once 'views/login.php';
