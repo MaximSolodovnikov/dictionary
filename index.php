@@ -9,17 +9,17 @@ switch ($act) {
      
         if ($_POST['login']) {
             
-            $eng_word = input_user($_POST['eng_word']);
-            $translate = input_user($_POST['translate']);
+            $user_name = input_user($_POST['user_name']);
+            $user_surname = input_user($_POST['user_surname']);
             
-            if (empty($eng_word) && empty($translate)) {
+            if (empty($user_name) && empty($user_surname)) {
                 $totalError = "Заполните все поля";
-            } elseif (empty($eng_word)) {
+            } elseif (empty($user_name)) {
                 $userNameError = "Не заполнено поле 'Ваше имя'";
-            } elseif (empty($translate)) {
+            } elseif (empty($user_surname)) {
                 $userSurnameError = "Не заполнено поле 'Ваше фамилия'";
             } else {
-                add_word($eng_word, $translate);
+                add_word($user_name, $user_surname);
                 header("Location: index.php?act=main");
             }
         }
