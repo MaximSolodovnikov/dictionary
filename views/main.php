@@ -3,23 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/my_style.css">
+        <link rel="icon" href="favicon.png">
         <title>Словарь</title>
     </head>
     <body>
-        <section id="formLogin">
-            <h4>Добро пожаловать в электронный словарь</h4>
-            <h6>Для продолжения введите свое имя и фамилию</h6>
+        <section id="formMain">
             <div id="error"><?= $totalError; ?></div>
-            <form action="index.php?act=login" method="post">
-                <div id="error"><?= $userNameError; ?></div>
-                <label>Введите имя:</label>
+            <form action="index.php?act=main" method="post">
+                <div id="error"><?= $engWordError; ?></div>
+                <label>Введите слово или фразу:</label>
+                <br>
                 <input type="text" name="eng_word" value="<?= $eng_word; ?>" size="20">
                 <br><br>
-                <div id="error"><?= $userSurnameError; ?></div>
-                <label>Введите фамилию:</label>
+                <div id="error"><?= $translateError; ?></div>
+                <label>Введите перевод:</label>
+                <br>
                 <input type="text" name="translate" value="<?= $translate; ?>" size="20">
                 <br><br>
-                <input type="submit" name="login" value="Вход">
+                <input type="submit" name="login" value="Записать">
             </form>
         </section>
         <footer>
