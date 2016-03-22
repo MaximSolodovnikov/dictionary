@@ -1,6 +1,6 @@
 function formValid() {
-    var userName = document.forms['formLogin']['user_name'].value;
-    var userSurname = document.forms['formLogin']['user_surname'].value;
+    var userName = document.forms['techForm']['user_name'].value;
+    var userSurname = document.forms['techForm']['user_surname'].value;
     
     if ((userName === null || userName === '') && (userSurname === null || userSurname === '')) {
         document.getElementById('error').innerHTML = 'Вы не заполнили все поля (js)';

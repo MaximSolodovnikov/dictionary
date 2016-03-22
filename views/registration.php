@@ -9,9 +9,9 @@
         <header>
             <p>Добро пожаловать в электронный словарь</p>
         </header>
-        <section id="formLogin">
-            <form name="techForm" action="index.php?act=login" method="post" onsubmit="return formValid()">
-                <div id="formName">Форма Авторизации</div>
+        <section id="formRegistr">
+            <form name="techForm" action="index.php?act=registration" method="post" onsubmit="return formValid()">
+                <div id="formName">Форма регистрации</div>
                 <br>
                 <div id="error"><?= $totalError . $userNameError . $userExistError; ?></div>
                 <br>
@@ -23,10 +23,10 @@
                 <label>Введите фамилию:</label>
                 <input type="text" name="user_surname" value="<?= $user_surname; ?>" size="20">
                 <br><br>
-                <input type="submit" name="login" value="Вход">
+                <input type="submit" name="registration" value="Регистрация">
             </form>
             <br>
-            <a href="index.php?act=forgot">Восстановление профиля</a>
+            <a href="index.php?act=login">Авторизация</a>
         </section>
         <footer>
             <script src="js/formValidation.js"></script>
