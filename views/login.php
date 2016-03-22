@@ -10,7 +10,7 @@
             <p>Добро пожаловать в электронный словарь</p>
         </header>
         <section id="formLogin">
-            <form name="techForm" action="index.php?act=login" method="post" onsubmit="return formValid()">
+            <form name="techForm" action="index.php?act=login" method="post" onsubmit="return formAuthorizValid()">
                 <div id="formName">Форма Авторизации</div>
                 <br>
                 <div id="error"><?= $totalError . $userNameError . $userExistError; ?></div>
@@ -29,7 +29,7 @@
             <a href="index.php?act=forgot">Восстановление профиля</a>
         </section>
         <footer>
-            <script src="js/formValidation.js"></script>
+            <script src="js/formAuthorizValid.js"></script>
         </footer>
     </body>
 </html>

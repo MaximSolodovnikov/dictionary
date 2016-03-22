@@ -15,7 +15,7 @@ header {
     padding: 10px;
 }
 
-#formRegistr, #formLogin {
+#formRegistr {
     margin: 25% auto;
     width: 20%;
     border: 2px solid lightgray;
@@ -24,12 +24,32 @@ header {
     padding: 10px;
 }
 
+#formLogin {
+    margin: 25% auto;
+    width: 20%;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    background: lightgoldenrodyellow;
+}
+
+#formMain {
+    margin: 25% auto;
+    width: 20%;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    background: lightcyan;
+}
+
 #formName {
     width: 100%;
     font-size: 1.4em;
 }
 
-input[type="text"] {
+input[type="text"], input[type="email"] {
     width: 90%;
     color: #666666;
     border: 2px solid lightgray;
@@ -43,16 +63,12 @@ input[type="submit"] {
     font-size: 0.8em;
 }
 
-#formMain {
-    margin: 15% auto;
-    width: 25%;
-    border: 2px solid orange;
-    border-radius: 10px;
-    text-align: center;
-    padding: 10px;
-}
-
 #error {
     color: red;
     font-size: 0.8em;
+}
+
+#exit {
+    text-decoration: none;
+    color: white;
 }

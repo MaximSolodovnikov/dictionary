@@ -7,24 +7,34 @@
         <title>Словарь</title>
     </head>
     <body>
+        <header>
+            <p>
+                Добро пожаловать в электронный словарь, 
+                <?= "<br>" . $_SESSION['user_name'] . " " . $_SESSION['user_surname']; ?> 
+                <?php if($_SESSION):  ?>
+                        <a id="exit" href="index.php?act=exit">&times</a>
+                <?php endif; ?>
+            </p>
+        </header>
         <section id="formMain">
-            <div id="error"><?= $totalError; ?></div>
-            <form action="index.php?act=main" method="post">
-                <div id="error"><?= $engWordError; ?></div>
-                <label>Введите слово или фразу:</label>
+            <form name="techForm" action="index.php?act=main" method="post" onsubmit="">
+                <div id="formName"></div>
                 <br>
-                <input type="text" name="eng_word" value="<?= $eng_word; ?>" size="20">
+                <div id="error"><?= $totalError . $userNameError . $userExistError; ?></div>
+                <br>
+                <label>Введите англ.слово или фразу:</label>
+                <br>
+                <input type="text" name="user_name" value="<?= $user_name; ?>" size="20">
                 <br><br>
-                <div id="error"><?= $translateError; ?></div>
+                <div id="error"><?= $userSurnameError; ?></div>
                 <label>Введите перевод:</label>
-                <br>
-                <input type="text" name="translate" value="<?= $translate; ?>" size="20">
+                <input type="text" name="user_surname" value="<?= $user_surname; ?>" size="20">
                 <br><br>
-                <input type="submit" name="login" value="Записать">
+                <input type="submit" name="login" value="Вход">
             </form>
         </section>
         <footer>
-            <script src="js/formValidation.js"><script>
+            <script src=""><script>
         </footer>
     </body>
 </html>
