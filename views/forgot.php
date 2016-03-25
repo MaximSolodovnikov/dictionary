@@ -10,11 +10,11 @@
         <header>
             <p>Восстановление профиля</p>
         </header>
-        <section id="formMain">
-            <form name="techForm" action="index.php?act=forgot" method="post" onsubmit="">
+        <section id="formRegistr">
+            <form name="techForm" action="index.php?act=forgot" method="post" onsubmit="return formRecovEmail()">
                 <div id="formName"></div>
+                <div id="error"><?= $emailError; ?></div>
                 <br>
-                <div id="error"><?= $userEmailError; ?></div>
                 <label>Введите адрес эл.почты:</label>
                 <input type="email" name="user_email" value="<?= $user_email; ?>" size="20">
                 <br><br>
@@ -22,7 +22,7 @@
             </form>
         </section>
         <footer>
-            <script src=""><script>
+            <script src="js/formValid.js"></script>
         </footer>
     </body>
 </html>

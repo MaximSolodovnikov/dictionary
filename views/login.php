@@ -29,7 +29,7 @@
             <a href="index.php?act=forgot">Восстановление профиля</a>
         </section>
         <footer>
-            <script src="js/formAuthorizValid.js"></script>
+            <script src="js/formValid.js"></script>
         </footer>
     </body>
 </html>

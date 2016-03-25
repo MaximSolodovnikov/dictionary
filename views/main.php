@@ -20,17 +20,17 @@
             <form name="techForm" action="index.php?act=main" method="post" onsubmit="">
                 <div id="formName"></div>
                 <br>
-                <div id="error"><?= $totalError . $userNameError . $userExistError; ?></div>
+                <div id="error"><?= $totalError . $engWordError; ?></div>
                 <br>
                 <label>Введите англ.слово или фразу:</label>
                 <br>
-                <input type="text" name="user_name" value="<?= $user_name; ?>" size="20">
+                <input type="text" name="eng_word" value="<?= $engWord; ?>" size="20">
                 <br><br>
-                <div id="error"><?= $userSurnameError; ?></div>
+                <div id="error"><?= $translateError; ?></div>
                 <label>Введите перевод:</label>
-                <input type="text" name="user_surname" value="<?= $user_surname; ?>" size="20">
+                <input type="text" name="translate" value="<?= $translate; ?>" size="20">
                 <br><br>
-                <input type="submit" name="login" value="Вход">
+                <input type="submit" name="input" value="Внести">
             </form>
         </section>
         <footer>

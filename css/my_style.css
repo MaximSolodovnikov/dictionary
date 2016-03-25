@@ -70,5 +70,6 @@ input[type="submit"] {
 
 #exit {
     text-decoration: none;
-    color: white;
+    color: red;
+    font-weight: bold;
 }
