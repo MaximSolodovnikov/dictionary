@@ -4,7 +4,7 @@ body {
 }
 
 header {
-    margin-top: -25%;
+    margin-top: -15%;
     width:100%;
     height: 60px;
     position: fixed;
@@ -16,7 +16,7 @@ header {
 }
 
 #formRegistr {
-    margin: 25% auto;
+    margin: 15% auto;
     width: 20%;
     border: 2px solid lightgray;
     border-radius: 10px;
@@ -25,7 +25,7 @@ header {
 }
 
 #formLogin {
-    margin: 25% auto;
+    margin: 15% auto;
     width: 20%;
     border: 2px solid lightgray;
     border-radius: 10px;
@@ -35,7 +35,7 @@ header {
 }
 
 #formMain {
-    margin: 25% auto;
+    margin: 15% auto;
     width: 20%;
     border: 2px solid lightgray;
     border-radius: 10px;
@@ -70,5 +70,6 @@ input[type="submit"] {
 
 #exit {
     text-decoration: none;
-    color: white;
+    color: red;
+    font-weight: bold;
 }

@@ -33,7 +33,7 @@
             <a href="index.php?act=login">Авторизация</a>
         </section>
         <footer>
-            <script src="js/formRegValid.js"></script>
+            <script src="js/formValid.js"></script>
         </footer>
     </body>
 </html>

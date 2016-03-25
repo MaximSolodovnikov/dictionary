@@ -72,10 +72,10 @@ switch ($act) {
             
             $user_email = input_user($_POST['user_email']);
             
-            if (check_login($user_name, $user_surname)) {
-                print_r(profile_recovery($user_name, $user_surname));
-                $message = "Восстановление профиля";
+            if (check_email($user_email)) {
                 mail($user_email, $message, "");
+            } else {
+                $emailError = "Вы указали не верный адрес эл.почты";
             }
         }
         require_once "views/forgot.php";
