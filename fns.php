@@ -126,3 +126,8 @@ function profile_recovery($user_email)
     }
     $connect->close();
 }
+
+function add_word($eng_word, $translate)
+{
+    
+}

@@ -58,6 +58,21 @@ switch ($act) {
         if (empty($_SESSION)) {
             header("Location: index.php?act=login");
         } else {
+            if ($_POST['input']) {
+                
+                $eng_word = input_user($_POST['eng_word']);
+                $translate = input_user($_POST['translate']);
+                if (empty($eng_word) && empty($translate)) {
+                    $totalError = "Заполните все поля";
+                } elseif (empty ($eng_word)) {
+                    $engWordError = "Вы не ввели слово для перевода";
+                } elseif (empty ($translate)) {
+                    $translateError = "Вы не ввели перевод";
+                } else {
+                    add_word($eng_word, $translate);
+                    header("Location: index.php?act=main");
+                }
+            }
             require_once "views/main.php";
         }
         break;
