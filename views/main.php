@@ -12,7 +12,7 @@
                 Добро пожаловать в электронный словарь, 
                 <?= "<br>" . $_SESSION['user_name'] . " " . $_SESSION['user_surname']; ?> 
                 <?php if($_SESSION):  ?>
-                        <a id="exit" href="index.php?act=exit">&times</a>
+                <a id="exit" href="index.php?act=exit">&times</a>
                 <?php endif; ?>
             </p>
         </header>

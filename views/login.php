@@ -22,11 +22,14 @@
                 <div id="error"><?= $userSurnameError; ?></div>
                 <label>Введите фамилию:</label>
                 <input type="text" name="user_surname" value="<?= $user_surname; ?>" size="20">
+                <input type="hidden" name="user_id" value="<?= $_SESSION['user_id']; ?>">
                 <br><br>
                 <input type="submit" name="login" value="Вход">
             </form>
             <br>
             <a href="index.php?act=forgot">Восстановление профиля</a>
+            <br>
+            <a href="index.php?act=registration">Регистрация</a>
         </section>
         <footer>
             <script src="js/formValid.js"></script>

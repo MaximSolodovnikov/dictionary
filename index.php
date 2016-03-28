@@ -1,7 +1,9 @@
 <?php
 
-session_start();
 require_once 'fns.php';
+
+session_start();
+    
 $act = $_GET['act'] ? $_GET['act'] : 'registration';
 
 switch ($act) {
@@ -24,7 +26,8 @@ switch ($act) {
             } elseif (check_user($user_name, $user_surname)) {
                 $userExistError = "Такой пользователь уже существует";
             } else {
-                add_user($user_name, $user_surname, $user_email);
+                
+                $_SESSION['user_id'] = add_user($user_name, $user_surname, $user_email);
                 header("Location: index.php?act=login");
             }
         }
@@ -43,12 +46,13 @@ switch ($act) {
                 $userNameError = "Не заполнено поле 'Ваше имя'";
             } elseif (empty($user_surname)) {
                 $userSurnameError = "Не заполнено поле 'Ваша фамилия'";
-            } elseif (check_login($user_name, $user_surname)) {
-                $userExistError = "Указанный пользователь не зарегистрирован";
-            } else {
+            } elseif ($user_id = check_login($user_name, $user_surname)) {
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['user_name'] = $user_name;
                 $_SESSION['user_surname'] = $user_surname;
                 header("Location: index.php?act=main");
+            } else {
+                $userExistError = "Указанный пользователь не зарегистрирован";
             }
         }
         require_once 'views/login.php';
@@ -62,6 +66,7 @@ switch ($act) {
                 
                 $eng_word = input_user($_POST['eng_word']);
                 $translate = input_user($_POST['translate']);
+                
                 if (empty($eng_word) && empty($translate)) {
                     $totalError = "Заполните все поля";
                 } elseif (empty ($eng_word)) {
@@ -69,7 +74,7 @@ switch ($act) {
                 } elseif (empty ($translate)) {
                     $translateError = "Вы не ввели перевод";
                 } else {
-                    add_word($eng_word, $translate);
+                    add_word($eng_word, $translate, $_SESSION['user_id']);
                     header("Location: index.php?act=main");
                 }
             }

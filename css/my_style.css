@@ -70,6 +70,12 @@ input[type="submit"] {
 
 #exit {
     text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#exit:hover {
     color: red;
+    text-decoration: none;
     font-weight: bold;
 }
