@@ -18,22 +18,24 @@
                 </p>
             </header>
         <div id="wrapper">
-            <table id="table_output_words">
-                <tr>
-                    <th>№</th>
-                    <th>Англ. слово</th>
-                    <th>Перевод</th>
-                    <th>Дата и время</th>
-                </tr>
-                <?php foreach($words as $item): ?>
+            <?php if (!empty($words)): ?>
+                <table id="table_output_words">
                     <tr>
-                        <td><?php echo $item['id']; ?></td>
-                        <td><?php echo $item['eng_word']; ?></td>
-                        <td><?php echo $item['translate']; ?></td>
-                        <td><?php echo $item['time_date']; ?></td>
+                        <th>№</th>
+                        <th>Англ. слово</th>
+                        <th>Перевод</th>
+                        <th>Дата и время</th>
                     </tr>
-                <?php endforeach; ?>    
-            </table> 
+                    <?php foreach($words as $item): ?>
+                        <tr>
+                            <td><?php echo $item['id']; ?></td>
+                            <td><?php echo $item['eng_word']; ?></td>
+                            <td><?php echo $item['translate']; ?></td>
+                            <td><?php echo $item['time_date']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>    
+                </table>
+            <?php endif; ?>
             <section id="formMain">
                 <form name="techForm" action="index.php?act=main" method="post" onsubmit="">
                     <div id="formName"></div>
