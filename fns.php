@@ -134,17 +134,16 @@ function profile_recovery($user_email)
     $result = $connect->query($sql);
     
     if ($result->num_rows > 0) {
-        
-        while ($row = $result->fetch_assoc()) {
-            echo $row['user_email'];
+        $user_email = 0;
+        while ($row = $result->fetch_assoc()) { // ???? //
+            $row['user_email'] = $user_email;
+            return $user_email;
         }
     } else {
         return false;
     }
     $connect->close();
 }
-
-
 
 function add_word($eng_word, $translate, $user_id)
 {
@@ -163,4 +162,25 @@ function add_word($eng_word, $translate, $user_id)
     }
     $stmt->execute();
     $connect->close();
+}
+
+function get_words()
+{
+    $conn = new mysqli(HOST, USER, PSWD, DB);
+    if($conn->connect_error) {
+        die("Connection failed <br>" . $connect->mysqli_error);
+    }
+    
+    $sql = "SELECT * FROM `dictionary` ORDER BY id DESC LIMIT 5";
+    $result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+
+    while($row = $result->fetch_assoc()) {
+        $data_dictionary[] = $row;
+    }
+    return $data_dictionary;
+}
+$conn->close();
 }

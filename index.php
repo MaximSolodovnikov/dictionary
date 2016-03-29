@@ -62,6 +62,7 @@ switch ($act) {
         if (empty($_SESSION)) {
             header("Location: index.php?act=login");
         } else {
+            $words = get_words();
             if ($_POST['input']) {
                 
                 $eng_word = input_user($_POST['eng_word']);
