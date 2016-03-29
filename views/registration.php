@@ -6,9 +6,9 @@
         <title>Словарь</title>
     </head>
     <body>
-        <header>
+        <!--<header>
             <p>Добро пожаловать в электронный словарь</p>
-        </header>
+        </header>-->
         <section id="formRegistr">
             <form name="techForm" action="index.php?act=registration" method="post" onsubmit="return formRegValid()">
                 <div id="formName">Форма регистрации</div>

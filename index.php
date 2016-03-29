@@ -1,6 +1,4 @@
-<?php
-
-require_once 'fns.php';
+<?php  require_once 'fns.php';
 
 session_start();
     
@@ -8,13 +6,10 @@ $act = $_GET['act'] ? $_GET['act'] : 'registration';
 
 switch ($act) {
     case "registration":
-     
         if ($_POST['registration']) {
-            
             $user_name = input_user($_POST['user_name']);
             $user_surname = input_user($_POST['user_surname']);
             $user_email = input_user($_POST['user_email']);
-            
             if (empty($user_name) && empty($user_surname) && empty($user_email)) {
                 $totalError = "Заполните все поля";
             } elseif (empty($user_name)) {
@@ -26,8 +21,7 @@ switch ($act) {
             } elseif (check_user($user_name, $user_surname)) {
                 $userExistError = "Такой пользователь уже существует";
             } else {
-                
-                $_SESSION['user_id'] = add_user($user_name, $user_surname, $user_email);
+                add_user($user_name, $user_surname, $user_email);
                 header("Location: index.php?act=login");
             }
         }
@@ -90,11 +84,13 @@ switch ($act) {
     
     case "forgot":
         if ($_POST['forgot']) {
-            
             $user_email = input_user($_POST['user_email']);
-            
-            if (check_email($user_email)) {
-                mail($user_email, $message, "");
+            if ($data_user = check_email($user_email)) {
+                $subject = "Recovering of user profile";
+                $message = "Ваше имя: " . $data_user[0]['user_name'] . "<br>";
+                $message .= "Ваша фамилия: " . $data_user[0]['user_surname'];
+                mail($user_email, $subject, $message);
+                header("Location: index.php?act=login");
             } else {
                 $emailError = "Вы указали не верный адрес эл.почты";
             }

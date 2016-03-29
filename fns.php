@@ -1,7 +1,15 @@
-<?php
+<?php  require_once 'db_config.php';
 
-require_once 'db_config.php';
-    
+function db_connect()
+{
+    $connect = mysqli_connect(HOST, USER, PSWD, DB);
+    if (!$connect) {
+        return die("Error to connect to DB <br>" . mysqli_error());
+    } else {
+        return $connect;
+    }
+}
+
 function input_user($data)
 {
     $data = trim($data);
@@ -14,103 +22,58 @@ function input_user($data)
 
 function check_user($user_name, $user_surname)
 {
-    $connect = new mysqli(HOST, USER, PSWD, DB);
-    
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    
-    $sql = "SELECT * 
-            FROM `users` 
-            WHERE `id` = '$user_id' AND `user_name` = '$user_name'
-            AND `user_surname` = '$user_surname'";
-    $result = $connect->query($sql);
-    
-    if ($result->num_rows > 0) {
-        return $user_id;
-    } else {
-        return false;
-    }
-    $connect->close();
-}
-
-function get_user_id()
-{
-     $connect = new mysqli(HOST, USER, PSWD, DB);
-    
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    
-    $sql = "SELECT `id` FROM `users`";
-    $result = $connect->query($sql);
-}
-
-function add_user($user_name, $user_surname, $user_email)
-{
-   $connect = new mysqli(HOST, USER, PSWD, DB);
-    
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    //Prepare and bind
-    if ($stmt = $connect->prepare("INSERT INTO `users` (`user_name`, `user_surname`, `email`) VALUES (?, ?, ?)")) {
-        $stmt->bind_param("sss", $user_name, $user_surname, $user_email);
-    } else {
-        printf("Errormessage: %s\n", $mysqli->error);
-    }
-    $stmt->execute();
-    $connect->close();
-}
-
-function check_login($user_name, $user_surname)
-{
-    $connect = new mysqli(HOST, USER, PSWD, DB);
-    
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    
     $sql = "SELECT * 
             FROM `users` 
             WHERE `user_name` = '$user_name'
             AND `user_surname` = '$user_surname'";
-    $result = $connect->query($sql);
+    $result = mysqli_query(db_connect(), $sql);
+    
+    if (mysqli_num_rows($result) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
+function add_user($user_name, $user_surname, $user_email)
+{ 
+    $ins = "INSERT INTO `users` (`user_name`, `user_surname`, `email`)
+            VALUES ('$user_name', '$user_surname', '$user_email')";
+    $result = mysqli_query(db_connect(), $ins);
+}
+
+function check_login($user_name, $user_surname)
+{
+    $sql = "SELECT * 
+            FROM `users` 
+            WHERE `user_name` = '$user_name'
+            AND `user_surname` = '$user_surname'";
+    $result = mysqli_query(db_connect(), $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
             return $row["id"];
         }
     } else {
         return false;
     }
-    $connect->close();
 }
 
 function check_email($user_email)
 {
-   $connect = new mysqli(HOST, USER, PSWD, DB);
+    $sql = "SELECT `user_name`, `user_surname`, `email`
+            FROM `users`
+            WHERE `email` = '$user_email'";
+    $result = mysqli_query(db_connect(), $sql);
     
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    
-    $sql = "SELECT * 
-            FROM `users` 
-            WHERE `user_email` = '$user_email'";
-    $result = $connect->query($sql);
-    
-    if ($result->num_rows > 0) {
-        return false;
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
+            $data_user[] = $row;
+        }
+        return $data_user;
     } else {
-        return true;
+        return false;
     }
-    $connect->close();
 }
 
 function exit_user($user_name, $user_surname)
@@ -118,69 +81,43 @@ function exit_user($user_name, $user_surname)
     $user = session_unset();
     $user_surname = session_unset();
 }
-
+/*
 function profile_recovery($user_email)
 {
-    $connect = new mysqli(HOST, USER, PSWD, DB);
-    
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
+    db_connect();
     
     $sql = "SELECT * 
             FROM `users` 
             WHERE `user_email` = '$user_email'";
-    $result = $connect->query($sql);
+    $result = mysqli_query($sql);
     
-    if ($result->num_rows > 0) {
+    if (mysqli_num_rows($result) > 0) {
         $user_email = 0;
-        while ($row = $result->fetch_assoc()) { // ???? //
+        while ($row = mysqli_fetch_assoc($result)) { // ???? //
             $row['user_email'] = $user_email;
             return $user_email;
         }
     } else {
         return false;
     }
-    $connect->close();
 }
-
+*/
 function add_word($eng_word, $translate, $user_id)
 {
-    $connect = new mysqli(HOST, USER, PSWD, DB);
-    
-    //Check connection
-    if ($connect->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    
-    //Prepare and bind
-    if ($stmt = $connect->prepare("INSERT INTO `dictionary` (`eng_word`, `translate`, `user_id`) VALUES (?, ?, ?)")) {
-        $stmt->bind_param("ssi", $eng_word, $translate, $user_id);
-    } else {
-        printf("Errormessage: %s\n", $mysqli->error);
-    }
-    $stmt->execute();
-    $connect->close();
+    $ins = "INSERT INTO `dictionary` (`eng_word`, `translate`, `user_id`) VALUES ('$eng_word', '$translate', '$user_id')"; 
+	$result = mysqli_query(db_connect(), $ins);
 }
 
 function get_words()
 {
-    $conn = new mysqli(HOST, USER, PSWD, DB);
-    if($conn->connect_error) {
-        die("Connection failed <br>" . $connect->mysqli_error);
-    }
-    
     $sql = "SELECT * FROM `dictionary` ORDER BY id DESC LIMIT 5";
-    $result = $conn->query($sql);
+    $result = mysqli_query(db_connect(), $sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
+if (mysqli_num_rows($result) > 0) {
 
-    while($row = $result->fetch_assoc()) {
+    while($row = mysqli_fetch_assoc($result)) {
         $data_dictionary[] = $row;
     }
-    return $data_dictionary;
-}
-$conn->close();
+        return $data_dictionary;
+    }
 }

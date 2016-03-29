@@ -7,17 +7,17 @@
         <title>Словарь</title>
     </head>
     <body>
-        
-            <header>
-                <p>
-                    Добро пожаловать в электронный словарь, 
-                    <?= "<br>" . $_SESSION['user_name'] . " " . $_SESSION['user_surname']; ?> 
-                    <?php if($_SESSION):  ?>
-                    <a id="exit" href="index.php?act=exit">&times</a>
-                    <?php endif; ?>
-                </p>
-            </header>
+        <header>
+            <p>
+                Добро пожаловать в электронный словарь, 
+                <?= "<br>" . $_SESSION['user_name'] . " " . $_SESSION['user_surname']; ?> 
+                <?php if($_SESSION):  ?>
+                <a id="exit" href="index.php?act=exit">&times;</a>
+                <?php endif; ?>
+            </p>
+        </header>
         <div id="wrapper">
+            <?php echo check_user($user_name, $user_surname)?>
             <?php if (!empty($words)): ?>
                 <table id="table_output_words">
                     <tr>
@@ -37,7 +37,7 @@
                 </table>
             <?php endif; ?>
             <section id="formMain">
-                <form name="techForm" action="index.php?act=main" method="post" onsubmit="">
+                <form name="techForm" action="index.php?act=main" method="post" onsubmit="return formMainValid()">
                     <div id="formName"></div>
                     <br>
                     <div id="error"><?= $totalError . $engWordError; ?></div>
@@ -55,7 +55,7 @@
             </section>
         </div>
         <footer>
-            <script src=""></script>
+            <script src="js/formValid.js"></script>
         </footer>
     </body>
 </html>

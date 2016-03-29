@@ -3,6 +3,10 @@ body {
     padding:0;
 }
 
+#wrapper {
+    margin: 10% auto;
+}
+
 header {
     margin-top: -10%;
     width:100%;
@@ -13,10 +17,6 @@ header {
     font-size: 1.3em;
     color: white;
     padding: 10px;
-}
-
-#wrapper {
-    margin:10% auto;
 }
 
 #formRegistr {
@@ -45,7 +45,8 @@ header {
     border-radius: 10px;
     text-align: center;
     padding: 10px;
-    background: lightcyan;
+    color: #fff;
+    background: #0c3857;
 }
 
 #formName {
@@ -73,15 +74,20 @@ input[type="submit"] {
 }
 
 #exit {
+    font-size: 0.8em;
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    background: red;
+    padding: 0 5px;
+    border-radius: 50%;
 }
 
 #exit:hover {
     color: red;
+    background: white;
     text-decoration: none;
-    font-weight: bold;
+    padding: 0 5px;
+    border-radius: 50%;
 }
 
 #table_output_words, th, td {
