@@ -108,16 +108,17 @@ function add_word($eng_word, $translate, $user_id)
 	$result = mysqli_query(db_connect(), $ins);
 }
 
-function get_words()
+function get_my_words()
 {
-    $sql = "SELECT * FROM `dictionary` ORDER BY id DESC LIMIT 5";
+    $sql = "SELECT * FROM `dictionary` LEFT JOIN `users` ON `dictionary`.`user_id` = `users`.`id` ORDER BY `users`.`id` DESC LIMIT 5";
     $result = mysqli_query(db_connect(), $sql);
-
-if (mysqli_num_rows($result) > 0) {
-
-    while($row = mysqli_fetch_assoc($result)) {
-        $data_dictionary[] = $row;
-    }
-        return $data_dictionary;
+    
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $my_dictionary[] = $row;
+        }
+        return $my_dictionary;
+    } else {
+        return false;
     }
 }

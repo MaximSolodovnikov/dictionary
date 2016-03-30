@@ -56,7 +56,9 @@ switch ($act) {
         if (empty($_SESSION)) {
             header("Location: index.php?act=login");
         } else {
-            $words = get_words();
+
+            $my_words = get_my_words();
+
             if ($_POST['input']) {
                 
                 $eng_word = input_user($_POST['eng_word']);
@@ -96,5 +98,9 @@ switch ($act) {
             }
         }
         require_once "views/forgot.php";
+        break;
+        
+    default:
+        require_once "views/404.php";
         break;
 }

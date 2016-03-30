@@ -17,25 +17,28 @@
             </p>
         </header>
         <div id="wrapper">
-            <?php echo check_user($user_name, $user_surname)?>
-            <?php if (!empty($words)): ?>
+            <?php if (!empty($my_words)): ?>
                 <table id="table_output_words">
                     <tr>
-                        <th>№</th>
                         <th>Англ. слово</th>
                         <th>Перевод</th>
                         <th>Дата и время</th>
                     </tr>
-                    <?php foreach($words as $item): ?>
-                        <tr>
-                            <td><?php echo $item['id']; ?></td>
-                            <td><?php echo $item['eng_word']; ?></td>
-                            <td><?php echo $item['translate']; ?></td>
-                            <td><?php echo $item['time_date']; ?></td>
-                        </tr>
-                    <?php endforeach; ?>    
+                    
+                    <?php foreach($my_words as $item): ?>
+
+                        <?php if ($_SESSION['user_id'] == $item['user_id']): ?>
+                            <tr>
+                                <td><?php echo $item['eng_word']; ?></td>
+                                <td><?php echo $item['translate']; ?></td>
+                                <td id="time_date"><?php echo $item['time_date']; ?></td>
+                            </tr>
+                        <?php endif; ?>
+
+                    <?php endforeach; ?>
                 </table>
             <?php endif; ?>
+            
             <section id="formMain">
                 <form name="techForm" action="index.php?act=main" method="post" onsubmit="return formMainValid()">
                     <div id="formName"></div>
